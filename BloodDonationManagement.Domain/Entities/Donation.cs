@@ -9,8 +9,7 @@ public class Donation : Entity
     public DateTime DonationDate { get; private set; }
     public int Quantity { get; private set; }
 
-    public Donation(
-        Guid donatorId, 
+    public Donation( 
         Donator donator, 
         DateTime donationDate, 
         int quantity
@@ -19,7 +18,7 @@ public class Donation : Entity
         Guard.IsNotDefault(donationDate);
         Guard.IsNotDefault(quantity);
         
-        DonatorId = donatorId;
+        DonatorId = donator.Id;
         Donator = donator;
         DonationDate = donationDate;
         Quantity = quantity;
