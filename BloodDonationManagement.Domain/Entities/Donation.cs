@@ -2,8 +2,6 @@
 
 public class Donation : Entity
 {
-    public const int MinimumAgeToDonate = 18;
-    
     public Guid DonatorId { get; private set; }
     public Donator Donator { get; private set; }
     public DateTime DonationDate { get; private set; }
