@@ -7,7 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.11.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+      <PackageReference Include="MediatR" Version="12.4.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BloodDonationManagement.Domain\BloodDonationManagement.Domain.csproj" />
+      <ProjectReference Include="..\BloodDonationManagement.Infrastructure\BloodDonationManagement.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
