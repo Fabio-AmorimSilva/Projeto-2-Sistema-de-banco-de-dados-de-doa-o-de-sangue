@@ -1,6 +1,3 @@
 ﻿namespace BloodDonationManagement.Application.Queries.GetDonation;
 
-public class GetDonationQuery
-{
-    
-}
+public record GetDonationQuery : IRequest<DonationDto>;

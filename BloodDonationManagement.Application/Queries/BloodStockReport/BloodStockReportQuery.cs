@@ -1,6 +1,3 @@
 ﻿namespace BloodDonationManagement.Application.Queries.BloodStockReport;
 
-public class BloodStockReportQuery
-{
-    
-}
+public record BloodStockReportQuery : IRequest<BloodStockDto>;
