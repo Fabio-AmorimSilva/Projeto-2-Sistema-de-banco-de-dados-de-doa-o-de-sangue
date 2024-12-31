@@ -10,6 +10,7 @@ public class DonatorRepository(BloodDonationManagementDbContext context) : IDona
     public async Task<IEnumerable<Donation>> GetAllDonationsAsync(Guid donatorId)
     {
         return await context.Donators
+            .Include(d => d.Donations)
             .SelectMany(d => d.Donations.Where(d => d.DonatorId == donatorId))
             .ToListAsync();
     }
