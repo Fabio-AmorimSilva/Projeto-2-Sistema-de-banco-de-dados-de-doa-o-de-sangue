@@ -2,6 +2,7 @@
 
 global using BloodDonationManagement.Domain.Common.Interfaces;
 global using BloodDonationManagement.Domain.Entities;
+global using BloodDonationManagement.Domain.Enums;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Infrastructure.Persistence;
 global using Microsoft.EntityFrameworkCore;
