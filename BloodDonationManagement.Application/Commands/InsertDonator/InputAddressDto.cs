@@ -1,4 +1,4 @@
-﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
+﻿namespace BloodDonationManagement.Application.Commands.InsertDonator;
 
 public record InputAddressDto(
     string PublicArea,
