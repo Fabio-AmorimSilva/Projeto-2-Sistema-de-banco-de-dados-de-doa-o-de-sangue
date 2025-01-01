@@ -2,7 +2,8 @@
 
 public interface IBloodStockRepository
 {
-    Task AddAsync(BloodStock bloodStock);
     Task UpdateAsync(BloodStock bloodStock);
-    Task<IEnumerable<BloodStock>> GetAsync();
+    Task<BloodStock> GetAsync(RhFactor rhFactor, BloodType bloodType);
+    Task<IEnumerable<BloodStock>> ListAsync();
+    Task<int> VerifyStockAsync();
 }
