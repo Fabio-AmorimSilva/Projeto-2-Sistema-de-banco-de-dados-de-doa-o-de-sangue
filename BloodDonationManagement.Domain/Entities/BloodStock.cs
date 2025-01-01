@@ -18,4 +18,9 @@ public class BloodStock : Entity
         RhFactor = rhFactor;
         Quantity = quantity;
     }
+
+    public void AddQuantity(int quantity)
+    {
+        Quantity += quantity;
+    }
 }
