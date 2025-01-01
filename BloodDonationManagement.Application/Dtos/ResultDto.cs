@@ -21,14 +21,25 @@ public class ResultDto
 
 public class ResultDto<T> : ResultDto
 {
+    public T? Data { get; set; }
+
+    public ResultDto()
+    {
+    }
+    
+    public ResultDto(T? data)
+    {
+        Data = data;
+    }
+    
     public new static ResultDto<T> Success()
-        => new ResultDto<T>()
+        => new()
         {
             IsSuccess = true
         };
 
     public new static ResultDto<T> Error(string message)
-        => new ResultDto<T>()
+        => new()
         {
             IsSuccess = false,
             Message = message
