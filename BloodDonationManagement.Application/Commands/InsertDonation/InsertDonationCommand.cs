@@ -1,53 +1,25 @@
 ﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
 
 public record InsertDonationCommand(
-    string Name,
-    string Email,
-    DateTime Birth,
-    Gender Gender,
-    double Weight,
-    BloodType BloodType,
-    RhFactor RhFactor,
-    InputAddressDto InputAddress
+    string DonatorId,
+    DateTime DonationDate,
+    string Quantity
 ) : IRequest;
 
 public class InsertDonationCommandValidator : AbstractValidator<InsertDonationCommand>
 {
     public InsertDonationCommandValidator()
     {
-        RuleFor(command => command.Name)
+        RuleFor(command => command.DonatorId)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Name)));
-
-        RuleFor(command => command.Email)
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.DonatorId)));
+        
+        RuleFor(command => command.DonationDate)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Email)));
-
-        RuleFor(command => command.Birth)
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.DonationDate)));
+        
+        RuleFor(command => command.Quantity)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Birth)));
-
-        RuleFor(command => command.Gender)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Gender)));
-
-        RuleFor(command => command.Weight)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Weight)));
-
-        RuleFor(command => command.BloodType)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.BloodType)));
-
-        RuleFor(command => command.RhFactor)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.RhFactor)));
-
-        RuleFor(command => command.Name)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Name)));
-
-        RuleFor(command => command.InputAddress)
-            .SetValidator(new AddressDtoValidator());
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Quantity)));
     }
 }
