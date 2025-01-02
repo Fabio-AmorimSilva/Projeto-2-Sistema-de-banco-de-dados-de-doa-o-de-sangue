@@ -2,7 +2,7 @@
 
 public class BloodStockUpdatedEvent : Event
 {
-    public BloodType BloodType { get; set; }
-    public RhFactor RhFactor { get; set; }
-    public int Quantity { get; set; }
+    public BloodType BloodType { get; init; }
+    public RhFactor RhFactor { get; init; }
+    public int Quantity { get; init; }
 }
