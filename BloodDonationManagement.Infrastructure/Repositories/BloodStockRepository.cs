@@ -26,6 +26,6 @@ public class BloodStockRepository(BloodDonationManagementDbContext context) : IB
 
     public async Task<int> VerifyStockAsync()
     {
-        return await context.BloodStocks.Select(bt => bt.Quantity).CountAsync();
+        return await context.BloodStocks.Select(bt => bt.Quantity).SumAsync();
     }
 }
