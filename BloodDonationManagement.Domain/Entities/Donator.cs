@@ -2,7 +2,7 @@
 
 public class Donator : Entity
 {
-    public const int MinimunWeight = 50;
+    public const int MinimumWeight = 50;
     public const int MinimumBloodQuantity = 420;
     public const int MaximumBloodQuantity = 470;
     
@@ -32,7 +32,7 @@ public class Donator : Entity
         Guard.IsNotWhiteSpace(name);
         Guard.IsNotWhiteSpace(email);
         Guard.IsNotDefault(birth);
-        Guard.IsLessThanOrEqualTo(weight, MinimunWeight, nameof(weight));
+        Guard.IsLessThanOrEqualTo(weight, MinimumWeight, nameof(weight));
         
         Name = name;
         Email = email;
