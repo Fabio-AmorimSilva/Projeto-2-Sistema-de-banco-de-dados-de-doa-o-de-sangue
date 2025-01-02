@@ -1,10 +1,10 @@
-﻿// Global using directives
-
-global using BloodDonationManagement.Domain.Common.Interfaces;
+﻿global using BloodDonationManagement.Domain.Common.Interfaces;
 global using BloodDonationManagement.Domain.Entities;
 global using BloodDonationManagement.Domain.Enums;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Infrastructure.Persistence;
+global using BloodDonationManagement.Infrastructure.Repositories;
+global using BloodDonationManagement.Infrastructure.UnitWork;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Configuration;

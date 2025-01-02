@@ -1,8 +1,5 @@
-﻿// Global using directives
-
-global using System.Net.Http.Json;
+﻿global using System.Net.Http.Json;
 global using BloodDonationManagement.Application.Dtos;
-global using BloodDonationManagement.Application.Queries.GetDonation;
 global using BloodDonationManagement.Application.Services;
 global using BloodDonationManagement.Domain.Common.Interfaces;
 global using BloodDonationManagement.Domain.Entities;
