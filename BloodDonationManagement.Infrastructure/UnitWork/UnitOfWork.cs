@@ -1,4 +1,4 @@
-﻿namespace BloodDonationManagement.Infrastructure.UnitOfWork;
+﻿namespace BloodDonationManagement.Infrastructure.UnitWork;
 
 public class UnitOfWork(BloodDonationManagementDbContext context) : IUnitOfWork
 {
