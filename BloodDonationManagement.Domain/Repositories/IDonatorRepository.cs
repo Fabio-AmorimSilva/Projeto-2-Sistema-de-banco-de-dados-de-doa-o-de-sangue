@@ -3,5 +3,6 @@
 public interface IDonatorRepository
 {
     Task AddAsync(Donator donator);
-    Task<IEnumerable<Donation>> GetAllDonationsAsync(Guid donatorId);
+    Task<Donator?> GetDonatorAndHisDonationsAsync(Guid donatorId);
+    Task<IEnumerable<Donation>> GetAllDonationsFromLast30DaysAsync();
 }
