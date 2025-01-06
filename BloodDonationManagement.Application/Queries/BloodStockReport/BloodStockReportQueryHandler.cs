@@ -7,7 +7,11 @@ public class BloodStockReportQueryHandler(IBloodStockRepository repository) : IR
         var bloodStocks = await repository.ListAsync();
 
         var bloodStockByType = bloodStocks
-            .GroupBy(bt => new { bt.BloodType, bt.RhFactor })
+            .GroupBy(bt => new
+            {
+                bt.BloodType,
+                bt.RhFactor
+            })
             .Select(bt => new BloodStockDto
             {
                 BloodType = bt.Key.BloodType,
