@@ -1,0 +1,3 @@
+﻿namespace BloodDonationManagement.Application.Queries.ListDonationsFromLast30DaysReport;
+
+public record ListDonationsFromLast30DaysReportQuery : IRequest<ResultDto<ListDonationsFromLast30DaysReportDto>>;
