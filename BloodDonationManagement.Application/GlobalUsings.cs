@@ -1,4 +1,5 @@
 ﻿global using System.Net.Http.Json;
+global using System.Reflection;
 global using BloodDonationManagement.Application.Dtos;
 global using BloodDonationManagement.Application.Services;
 global using BloodDonationManagement.Domain.Common.Interfaces;
