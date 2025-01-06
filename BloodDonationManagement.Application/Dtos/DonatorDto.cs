@@ -10,4 +10,5 @@ public record DonatorDto
     public required BloodType BloodType { get; init; }
     public required RhFactor RhFactor { get; init; }
     public required ResponseAddressDto Address { get; init; }
+    public required IEnumerable<DonationDto> Donations { get; init; }
 }
