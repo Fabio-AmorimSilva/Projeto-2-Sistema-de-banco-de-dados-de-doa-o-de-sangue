@@ -14,13 +14,13 @@ public class DonatorRepository(BloodDonationManagementDbContext context) : IDona
             .FirstOrDefaultAsync();
     }
     
-    public async Task<IEnumerable<Donation>> GetAllDonationsFromLast30DaysAsync()
+    public async Task<IEnumerable<Donator>> GetAllDonationsFromLast30DaysAsync()
     {
         var last30Days = DateTime.Now.AddDays(-30);
 
         return await context.Donators
-            .Include(d => d.Donations)
-            .SelectMany(donator => donator.Donations.Where(donation => donation.DonationDate.Date >= last30Days))
+            .AsNoTracking()
+            .Include(donator => donator.Donations.Where(donation => donation.DonationDate.Date >= last30Days))
             .ToListAsync();
     }
 }

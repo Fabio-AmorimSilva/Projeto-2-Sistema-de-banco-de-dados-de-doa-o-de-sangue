@@ -2,13 +2,12 @@
 
 public class BloodStockRepository(BloodDonationManagementDbContext context) : IBloodStockRepository
 {
-    public Task UpdateAsync(BloodStock bloodStock)
+    public void UpdateAsync(BloodStock bloodStock)
     {
         context.BloodStocks.Update(bloodStock);
-        return Task.CompletedTask;
     }
 
-    public async Task<BloodStock> GetAsync(RhFactor rhFactor, BloodType bloodType)
+    public async Task<BloodStock?> GetAsync(RhFactor rhFactor, BloodType bloodType)
     {
         var bloodStock = await context.BloodStocks
             .Where(bt => 
@@ -19,7 +18,7 @@ public class BloodStockRepository(BloodDonationManagementDbContext context) : IB
         return bloodStock;
     }
 
-    public async Task<IEnumerable<BloodStock>> ListAsync()
+    public async Task<IEnumerable<BloodStock?>> ListAsync()
     {
         return await context.BloodStocks.ToListAsync();
     }
