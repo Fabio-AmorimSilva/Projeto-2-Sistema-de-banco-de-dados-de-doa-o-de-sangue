@@ -5,6 +5,11 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
 builder.Services
+    .AddInfrastructure(builder.Configuration)
+    .AddExceptionHandler()
+    .AddApplication();
+
+builder.Services
     .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
