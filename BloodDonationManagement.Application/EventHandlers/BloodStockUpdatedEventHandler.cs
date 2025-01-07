@@ -8,9 +8,12 @@ public class BloodStockUpdatedEventHandler(IBloodStockRepository repository) : I
             rhFactor: notification.RhFactor,
             bloodType: notification.BloodType
         );
+
+        if (bloodStock is null)
+            return;
         
         bloodStock.AddQuantity(notification.Quantity);
         
-        await repository.UpdateAsync(bloodStock);
+        repository.UpdateAsync(bloodStock);
     }
 }
