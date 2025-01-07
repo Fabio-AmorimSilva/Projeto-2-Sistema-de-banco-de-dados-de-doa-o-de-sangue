@@ -1,5 +1,6 @@
 ﻿global using System.Net.Http.Json;
 global using System.Reflection;
+global using BloodDonationManagement.Application.Behaviors;
 global using BloodDonationManagement.Application.Dtos;
 global using BloodDonationManagement.Application.Services;
 global using BloodDonationManagement.Domain.Common.Interfaces;
@@ -12,3 +13,4 @@ global using BloodDonationManagement.Domain.ValueObjects;
 global using FluentValidation;
 global using MediatR;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
