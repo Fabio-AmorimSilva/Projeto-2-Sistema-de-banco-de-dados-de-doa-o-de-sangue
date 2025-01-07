@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BloodDonationManagement.Application\BloodDonationManagement.Application.csproj" />
       <ProjectReference Include="..\BloodDonationManagement.Infrastructure\BloodDonationManagement.Infrastructure.csproj" />
     </ItemGroup>
 
