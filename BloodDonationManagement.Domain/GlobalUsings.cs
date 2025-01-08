@@ -1,4 +1,5 @@
-﻿global using BloodDonationManagement.Domain.Common;
+﻿global using System.Security.Claims;
+global using BloodDonationManagement.Domain.Common;
 global using BloodDonationManagement.Domain.Entities;
 global using BloodDonationManagement.Domain.Enums;
 global using BloodDonationManagement.Domain.ValueObjects;
