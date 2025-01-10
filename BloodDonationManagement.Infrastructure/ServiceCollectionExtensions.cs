@@ -6,6 +6,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IDonatorRepository, DonatorRepository>();
         services.AddScoped<IBloodStockRepository, BloodStockRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         
         services.AddDbContext<BloodDonationManagementDbContext>(options =>
