@@ -2,7 +2,6 @@
 
 public class InsertDonatorCommandHandler(
     IDonatorRepository repository,
-    IUnitOfWork unitOfWork,
     GetAddressViaCepService service
 ) : IRequestHandler<InsertDonatorCommand>
 {
@@ -27,6 +26,5 @@ public class InsertDonatorCommandHandler(
         );
 
         await repository.AddAsync(donator);
-        await unitOfWork.Commit();
     }
 }
