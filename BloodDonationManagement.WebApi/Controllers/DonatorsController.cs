@@ -1,6 +1,7 @@
 ﻿namespace BloodDonationManagement.WebApi.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/donators")]
 public class DonatorsController(IMediator mediator) : ControllerBase
 {
@@ -12,7 +13,7 @@ public class DonatorsController(IMediator mediator) : ControllerBase
         return Ok(donations.Data);
     }
 
-    [HttpGet("donations/donatorId:guid")]
+    [HttpGet("donations/{donatorId:guid}")]
     [ProducesResponseType(typeof(ListDonationsFromLast30DaysReportDto), StatusCodes.Status200OK)]
     public async Task<ActionResult> ListDonationsFromLast30Days(Guid donatorId)
     {
@@ -20,7 +21,7 @@ public class DonatorsController(IMediator mediator) : ControllerBase
         return Ok(donations.Data);
     }
 
-    [HttpPost]
+    [HttpPost()]
     [ProducesResponseType( StatusCodes.Status201Created)]
     public async Task<ActionResult> InsertDonator([FromBody] InsertDonatorCommand command)
     {
@@ -28,7 +29,7 @@ public class DonatorsController(IMediator mediator) : ControllerBase
         return Created();
     }
 
-    [HttpPost]
+    [HttpPost("donation")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult> InsertDonation([FromBody] InsertDonationCommand command)
     {
