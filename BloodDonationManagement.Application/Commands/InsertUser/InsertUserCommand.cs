@@ -16,6 +16,7 @@ public class InsertUserCommandValidator : AbstractValidator<InsertUserCommand>
         
         RuleFor(command => command.Email)
             .NotEmpty()
+            .EmailAddress()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertUserCommand.Email)));
         
         RuleFor(command => command.Password)

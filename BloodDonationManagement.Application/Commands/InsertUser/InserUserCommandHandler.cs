@@ -1,9 +1,19 @@
 ﻿namespace BloodDonationManagement.Application.Commands.InsertUser;
 
-public class InserUserCommandHandler : IRequestHandler<InsertUserCommand>
+public class InserUserCommandHandler(
+    IUserRepository repository
+) : IRequestHandler<InsertUserCommand>
 {
-    public Task Handle(InsertUserCommand request, CancellationToken cancellationToken)
+    public async Task Handle(InsertUserCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var password = PasswordHashService.HashPassword(request.Password);
+        
+        var user = new User(
+            name: request.Name,
+            email: request.Email,
+            password: password
+        );
+        
+        await repository.AddAsync(user);
     }
 }
