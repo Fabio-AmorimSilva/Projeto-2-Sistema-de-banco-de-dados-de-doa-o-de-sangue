@@ -2,7 +2,8 @@
 
 public interface IUserRepository
 {
-    Task CreateAsync(User user);
-    void UpdateAsync(User user);
-    void DeleteAsync(User user);
+    Task AddAsync(User user);
+    Task UpdateAsync(User user);
+    Task<User?> GetAsync(Guid id);
+    Task<User?> GetUserByEmailAndPassword(string email, string password);
 }
