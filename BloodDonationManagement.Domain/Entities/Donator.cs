@@ -18,6 +18,8 @@ public class Donator : Entity
     public IReadOnlyCollection<Donation> Donations => _donations;
     private List<Donation> _donations = [];
 
+    protected Donator() { }
+    
     public Donator(
         string name,
         string email,
@@ -32,7 +34,7 @@ public class Donator : Entity
         Guard.IsNotWhiteSpace(name);
         Guard.IsNotWhiteSpace(email);
         Guard.IsNotDefault(birth);
-        Guard.IsLessThanOrEqualTo(weight, MinimumWeight, nameof(weight));
+        Guard.IsGreaterThan(weight, MinimumWeight, nameof(weight));
         
         Name = name;
         Email = email;

@@ -7,6 +7,8 @@ public class Donation : Entity
     public DateTime DonationDate { get; private set; }
     public int Quantity { get; private set; }
 
+    protected Donation(){}
+    
     public Donation( 
         Donator donator, 
         DateTime donationDate, 

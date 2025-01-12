@@ -8,6 +8,8 @@ public class BloodStock : Entity
     public RhFactor RhFactor { get; private set; }
     public int Quantity { get; private set; }
 
+    protected BloodStock() { }
+    
     public BloodStock(
         BloodType bloodType, 
         RhFactor rhFactor, 
