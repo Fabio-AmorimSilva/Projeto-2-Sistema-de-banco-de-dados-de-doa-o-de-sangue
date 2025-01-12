@@ -1,10 +1,11 @@
 ﻿namespace BloodDonationManagement.Infrastructure.Repositories;
 
-public class BloodStockRepository(BloodDonationManagementDbContext context) : IBloodStockRepository
+public class BloodStockRepository(BloodDonationManagementDbContext context, IUnitOfWork unitOfWork) : IBloodStockRepository
 {
-    public void UpdateAsync(BloodStock bloodStock)
+    public async Task UpdateAsync(BloodStock bloodStock)
     {
         context.BloodStocks.Update(bloodStock);
+        await unitOfWork.Commit();
     }
 
     public async Task<BloodStock?> GetAsync(RhFactor rhFactor, BloodType bloodType)
