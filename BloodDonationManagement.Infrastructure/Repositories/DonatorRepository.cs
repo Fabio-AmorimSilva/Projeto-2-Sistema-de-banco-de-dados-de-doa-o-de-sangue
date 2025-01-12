@@ -1,10 +1,11 @@
 ﻿namespace BloodDonationManagement.Infrastructure.Repositories;
 
-public class DonatorRepository(BloodDonationManagementDbContext context) : IDonatorRepository
+public class DonatorRepository(BloodDonationManagementDbContext context, IUnitOfWork unitOfWork) : IDonatorRepository
 {
     public async Task AddAsync(Donator donator)
     {
         await context.Donators.AddAsync(donator);
+        await unitOfWork.Commit();
     }
 
     public async Task<Donator?> GetDonatorAndHisDonationsAsync(Guid donatorId)
