@@ -46,6 +46,7 @@ public class DonatorEntityTypeConfiguration : IEntityTypeConfiguration<Donator>
             {
                 address
                     .Property<Guid>("Id")
+                    .HasDefaultValueSql("NEWID()")
                     .ValueGeneratedOnAdd();
                 
                 address
