@@ -10,7 +10,7 @@ global using BloodDonationManagement.Domain.Events;
 global using BloodDonationManagement.Domain.Messages;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Domain.ValueObjects;
+global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
 global using FluentValidation;
 global using MediatR;
-global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;

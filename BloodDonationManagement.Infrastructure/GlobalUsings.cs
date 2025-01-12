@@ -1,11 +1,13 @@
 ﻿global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
+global using System.Security.Cryptography;
 global using System.Text;
 global using BloodDonationManagement.Domain.Common.Interfaces;
 global using BloodDonationManagement.Domain.Entities;
 global using BloodDonationManagement.Domain.Enums;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication;
+global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
 global using BloodDonationManagement.Infrastructure.Persistence;
 global using BloodDonationManagement.Infrastructure.Repositories;
 global using BloodDonationManagement.Infrastructure.UnitWork;
