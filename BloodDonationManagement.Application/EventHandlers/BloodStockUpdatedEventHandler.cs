@@ -14,6 +14,6 @@ public class BloodStockUpdatedEventHandler(IBloodStockRepository repository) : I
         
         bloodStock.AddQuantity(notification.Quantity);
         
-        repository.UpdateAsync(bloodStock);
+        await repository.UpdateAsync(bloodStock);
     }
 }
