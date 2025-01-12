@@ -1,6 +1,9 @@
 ﻿namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
 
-public record UpdateUserPasswordCommand(string Password) : IRequest;
+public record UpdateUserPasswordCommand(
+    Guid Id,
+    string Password
+) : IRequest<ResultDto<string>>;
 
 public class UpdateUserPasswordCommandValidator : AbstractValidator<UpdateUserPasswordCommand>
 {
