@@ -48,24 +48,27 @@ public class Donator : Entity
 
     public void AddDonation(Donation donation)
     {
-        if (donation.Donator.Birth.Year - DateTime.Now.Year < 18)
+        if (DateTime.Now.Year - donation.Donator.Birth.Year < 18)
             return;
 
         if (donation.Quantity is < MinimumBloodQuantity or > MaximumBloodQuantity)
             return;
-        
-        var lastDonationDate = _donations.LastOrDefault().DonationDate.Date;
-        
-        if (Gender == Gender.Female && donation.DonationDate.Date < lastDonationDate.AddDays(90))
+
+        if (_donations.Any())
         {
-            return;
+            var lastDonationDate = _donations.LastOrDefault()!.DonationDate.Date;
+
+            if (Gender == Gender.Female && donation.DonationDate.Date < lastDonationDate.AddDays(90))
+            {
+                return;
+            }
+
+            if (Gender == Gender.Male && donation.DonationDate.Date < lastDonationDate.AddDays(60))
+            {
+                return;
+            }
         }
-        
-        if (Gender == Gender.Male && donation.DonationDate.Date < lastDonationDate.AddDays(60))
-        {
-            return;
-        }
-        
+
         _donations.Add(donation);
     }
 }
