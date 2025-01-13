@@ -4,7 +4,7 @@ public record InsertDonationCommand(
     Guid DonatorId,
     DateTime DonationDate,
     int Quantity
-) : IRequest<ResultDto>, IRequest;
+) : IRequest<ResultDto>;
 
 public class InsertDonationCommandValidator : AbstractValidator<InsertDonationCommand>
 {
