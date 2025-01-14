@@ -1,3 +1,5 @@
+using BloodDonationManagement.WebApi.Utils;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -8,10 +10,10 @@ builder.Services
     .AddApplication();
 
 builder.Services
-    .AddInfrastructure(builder.Configuration);
+    .AddInfrastructure(builder.Configuration)
+    .AddJwtConfig(builder.Configuration);
 
-builder.Services.AddOpenApi();
-builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<BearerSecuritySchemeTransformer>(); });
 
 var app = builder.Build();
 
