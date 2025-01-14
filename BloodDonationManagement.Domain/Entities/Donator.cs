@@ -17,7 +17,6 @@ public class Donator : Entity
 
     private readonly List<Donation> _donations = [];
     public IReadOnlyCollection<Donation> Donations => _donations;
-    private List<Donation> _donations = [];
 
     protected Donator() { }
     
@@ -55,21 +54,18 @@ public class Donator : Entity
         if (donation.Quantity is < MinimumBloodQuantity or > MaximumBloodQuantity)
             return;
 
-        if (_donations.Any())
+        if (_donations.Count != 0)
         {
             var lastDonationDate = _donations.LastOrDefault()!.DonationDate.Date;
 
-            if (Gender == Gender.Female && donation.DonationDate.Date < lastDonationDate.AddDays(90))
+            switch (Gender)
             {
-                return;
-            }
-
-            if (Gender == Gender.Male && donation.DonationDate.Date < lastDonationDate.AddDays(60))
-            {
-                return;
+                case Gender.Female when donation.DonationDate.Date < lastDonationDate.AddDays(90):
+                case Gender.Male when donation.DonationDate.Date < lastDonationDate.AddDays(60):
+                    return;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
-
-        _donations.Add(donation);
     }
 }
