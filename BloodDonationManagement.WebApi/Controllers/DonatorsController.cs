@@ -5,7 +5,7 @@
 [Route("api/donators")]
 public class DonatorsController(IMediator mediator) : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("donation-from-last-30-days")]
     [ProducesResponseType(typeof(ListDonationsFromLast30DaysReportDto), StatusCodes.Status200OK)]
     public async Task<ActionResult> ListDonationsFromLast30Days()
     {
@@ -21,7 +21,7 @@ public class DonatorsController(IMediator mediator) : ControllerBase
         return Ok(donations.Data);
     }
 
-    [HttpPost()]
+    [HttpPost]
     [ProducesResponseType( StatusCodes.Status201Created)]
     public async Task<ActionResult> InsertDonator([FromBody] InsertDonatorCommand command)
     {

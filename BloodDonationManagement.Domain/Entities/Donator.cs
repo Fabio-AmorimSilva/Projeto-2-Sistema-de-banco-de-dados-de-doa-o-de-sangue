@@ -15,6 +15,7 @@ public class Donator : Entity
     public RhFactor RhFactor { get; private set; }
     public Address Address { get; private set; }
 
+    private readonly List<Donation> _donations = [];
     public IReadOnlyCollection<Donation> Donations => _donations;
     private List<Donation> _donations = [];
 
