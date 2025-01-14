@@ -6,6 +6,11 @@ public class ListDonationsFromLast30DaysReportQueryHandler(IDonatorRepository re
     public async Task<ResultDto<ListDonationsFromLast30DaysReportDto>> Handle(ListDonationsFromLast30DaysReportQuery request, CancellationToken cancellationToken)
     {
         var donators = await repository.GetAllDonationsFromLast30DaysAsync();
+
+        var existsDonations = donators.SelectMany(d => d.Donations).Any();
+        
+        if (existsDonations)
+            return new ResultDto<ListDonationsFromLast30DaysReportDto>();
         
         var donations = new ListDonationsFromLast30DaysReportDto
         {
