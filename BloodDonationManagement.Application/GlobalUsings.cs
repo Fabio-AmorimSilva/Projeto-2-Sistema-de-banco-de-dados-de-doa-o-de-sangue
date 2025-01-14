@@ -3,7 +3,6 @@ global using System.Reflection;
 global using BloodDonationManagement.Application.Behaviors;
 global using BloodDonationManagement.Application.Dtos;
 global using BloodDonationManagement.Application.Services;
-global using BloodDonationManagement.Domain.Common.Interfaces;
 global using BloodDonationManagement.Domain.Entities;
 global using BloodDonationManagement.Domain.Enums;
 global using BloodDonationManagement.Domain.Events;
