@@ -7,12 +7,18 @@ public class DonatorRepository(BloodDonationManagementDbContext context, IUnitOf
         await context.Donators.AddAsync(donator);
         await unitOfWork.Commit();
     }
+    
+    public async Task AddDonationAsync(Donation donation)
+    {
+        await context.Donations.AddAsync(donation);
+        await unitOfWork.Commit();
+    }
 
     public async Task<Donator?> GetDonatorAndHisDonationsAsync(Guid donatorId)
     {
         return await context.Donators
-            .Include(d => d.Donations.Where(donation => donation.DonatorId == donatorId))
-            .FirstOrDefaultAsync();
+            .Include(d => d.Donations)
+            .FirstOrDefaultAsync(d => d.Id == donatorId);
     }
     
     public async Task<IEnumerable<Donator>> GetAllDonationsFromLast30DaysAsync()
