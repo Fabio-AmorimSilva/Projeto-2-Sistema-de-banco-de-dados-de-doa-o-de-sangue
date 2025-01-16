@@ -8,6 +8,7 @@ public static class ServiceCollectionExtensions
         services.TryAddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddScoped<GetAddressViaCepService>();
+        services.AddScoped<BloodStockQuantityNotificationService>();
 
         return services;
     }
