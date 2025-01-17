@@ -1,22 +1,14 @@
 ﻿namespace BloodDonationManagement.Domain.ValueObjects;
 
-public class Address
+public class Address(
+    string publicArea,
+    string city,
+    string state,
+    string cep
+)
 {
-    public string PublicArea { get; private set; }
-    public string City { get; private set; }
-    public string State { get; private set; }
-    public string Cep { get; private set; }
-
-    public Address(
-        string publicArea, 
-        string city, 
-        string state, 
-        string cep
-    )
-    {
-        PublicArea = publicArea;
-        City = city;
-        State = state;
-        Cep = cep;
-    }
+    public string PublicArea { get; private set; } = publicArea;
+    public string City { get; private set; } = city;
+    public string State { get; private set; } = state;
+    public string Cep { get; private set; } = cep;
 }
