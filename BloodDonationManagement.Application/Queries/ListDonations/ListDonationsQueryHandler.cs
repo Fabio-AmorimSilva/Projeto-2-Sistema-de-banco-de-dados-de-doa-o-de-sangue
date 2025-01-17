@@ -1,33 +1,33 @@
 ﻿namespace BloodDonationManagement.Application.Queries.ListDonations;
 
-public class ListDonationsQueryHandler(IDonatorRepository repository) : IRequestHandler<ListDonationsQuery, ResultDto<ListDonationsDto>>
+public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHandler<ListDonationsQuery, ResultDto<ListDonationsDto>>
 {
     public async Task<ResultDto<ListDonationsDto>> Handle(ListDonationsQuery request, CancellationToken cancellationToken)
     {
-        var donator = await repository.GetDonatorAndHisDonationsAsync(donatorId: request.DonatorId);
+        var donor = await repository.GetDonorAndHisDonationsAsync(donorId: request.DonorId);
 
-        if (donator is null)
-            return ResultDto<ListDonationsDto>.Error(ErrorMessages.NotFound<Donator>());
+        if (donor is null)
+            return ResultDto<ListDonationsDto>.Error(ErrorMessages.NotFound<Donor>());
 
         var donations = new ListDonationsDto
         {
             Donator = new DonatorDto
             {
-                Email = donator.Email,
-                Name = donator.Name,
-                Weight = donator.Weight,
-                Birth = donator.Birth,
-                Gender = donator.Gender,
-                RhFactor = donator.RhFactor,
-                BloodType = donator.BloodType,
+                Email = donor.Email,
+                Name = donor.Name,
+                Weight = donor.Weight,
+                Birth = donor.Birth,
+                Gender = donor.Gender,
+                RhFactor = donor.RhFactor,
+                BloodType = donor.BloodType,
                 Address = new ResponseAddressDto
                 {
-                    PublicArea = donator.Address.PublicArea,
-                    City = donator.Address.City,
-                    State = donator.Address.State,
-                    Cep = donator.Address.Cep
+                    PublicArea = donor.Address.PublicArea,
+                    City = donor.Address.City,
+                    State = donor.Address.State,
+                    Cep = donor.Address.Cep
                 },
-                Donations = donator.Donations.Select(donation => new DonationDto
+                Donations = donor.Donations.Select(donation => new DonationDto
                 {
                     DonationDate = donation.DonationDate,
                     Quantity = donation.Quantity

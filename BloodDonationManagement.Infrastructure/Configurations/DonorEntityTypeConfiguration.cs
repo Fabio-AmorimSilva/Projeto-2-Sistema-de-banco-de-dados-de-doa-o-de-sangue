@@ -1,11 +1,11 @@
 ﻿namespace BloodDonationManagement.Infrastructure.Configurations;
 
-public class DonatorEntityTypeConfiguration : IEntityTypeConfiguration<Donator>
+public class DonorEntityTypeConfiguration : IEntityTypeConfiguration<Donor>
 {
-    public void Configure(EntityTypeBuilder<Donator> builder)
+    public void Configure(EntityTypeBuilder<Donor> builder)
     {
         builder
-            .ToTable("Donators");
+            .ToTable("Donors");
         
         builder
             .HasKey(d => d.Id);

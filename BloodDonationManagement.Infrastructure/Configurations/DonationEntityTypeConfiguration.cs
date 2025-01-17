@@ -23,9 +23,9 @@ public class DonationEntityTypeConfiguration : IEntityTypeConfiguration<Donation
             .IsRequired();
 
         builder
-            .HasOne(d => d.Donator)
+            .HasOne(d => d.Donor)
             .WithMany(d => d.Donations)
-            .HasForeignKey(d => d.DonatorId)
+            .HasForeignKey(d => d.DonorId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

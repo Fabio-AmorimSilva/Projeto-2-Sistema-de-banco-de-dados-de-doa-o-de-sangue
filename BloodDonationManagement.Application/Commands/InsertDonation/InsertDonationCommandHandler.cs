@@ -1,31 +1,31 @@
 ﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
 
 public class InsertDonationCommandHandler(
-    IDonatorRepository repository,
+    IDonorRepository repository,
     IMediator mediator
 ) : IRequestHandler<InsertDonationCommand, ResultDto>
 {
     public async Task<ResultDto> Handle(InsertDonationCommand request, CancellationToken cancellationToken)
     {
-        var donator = await repository.GetDonatorAndHisDonationsAsync(request.DonatorId);
+        var donor = await repository.GetDonorAndHisDonationsAsync(request.DonatorId);
         
-        if (donator is null)
-            return ResultDto.Error(ErrorMessages.NotFound<Donator>());
+        if (donor is null)
+            return ResultDto.Error(ErrorMessages.NotFound<Donor>());
 
         var donation = new Donation(
-            donator: donator,
+            donor: donor,
             donationDate: request.DonationDate,
             quantity: request.Quantity
         );
         
-        donator.AddDonation(donation);
+        donor.AddDonation(donation);
         
         await repository.AddDonationAsync(donation);
         
         var @event = new BloodStockUpdatedEvent
         {
-            BloodType = donator.BloodType,
-            RhFactor = donator.RhFactor,
+            BloodType = donor.BloodType,
+            RhFactor = donor.RhFactor,
             Quantity = request.Quantity
         };
 

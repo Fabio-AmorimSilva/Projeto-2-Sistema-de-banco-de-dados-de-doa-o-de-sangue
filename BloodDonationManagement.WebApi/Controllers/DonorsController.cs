@@ -2,8 +2,8 @@
 
 [ApiController]
 [Authorize]
-[Route("api/donators")]
-public class DonatorsController(IMediator mediator) : ControllerBase
+[Route("api/donors")]
+public class DonorsController(IMediator mediator) : ControllerBase
 {
     [HttpGet("donation-from-last-30-days")]
     [ProducesResponseType(typeof(ListDonationsFromLast30DaysReportDto), StatusCodes.Status200OK)]
@@ -13,17 +13,17 @@ public class DonatorsController(IMediator mediator) : ControllerBase
         return Ok(donations.Data);
     }
 
-    [HttpGet("donations/{donatorId:guid}")]
+    [HttpGet("donations/{donorId:guid}")]
     [ProducesResponseType(typeof(ListDonationsFromLast30DaysReportDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult> ListDonationsFromLast30Days(Guid donatorId)
+    public async Task<ActionResult> ListDonationsFromLast30Days(Guid donorId)
     {
-        var donations = await mediator.Send(new ListDonationsQuery(donatorId));
+        var donations = await mediator.Send(new ListDonationsQuery(donorId));
         return Ok(donations.Data);
     }
 
     [HttpPost]
     [ProducesResponseType( StatusCodes.Status201Created)]
-    public async Task<ActionResult> InsertDonator([FromBody] InsertDonatorCommand command)
+    public async Task<ActionResult> InsertDonor([FromBody] InsertDonorCommand command)
     {
         await mediator.Send(command);
         return Created();

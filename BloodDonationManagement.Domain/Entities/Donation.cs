@@ -2,15 +2,15 @@
 
 public class Donation : Entity
 {
-    public Guid DonatorId { get; private set; }
-    public Donator Donator { get; private set; }
+    public Guid DonorId { get; private set; }
+    public Donor Donor { get; private set; }
     public DateTime DonationDate { get; private set; }
     public int Quantity { get; private set; }
 
     protected Donation(){}
     
     public Donation( 
-        Donator donator, 
+        Donor donor, 
         DateTime donationDate, 
         int quantity
     )
@@ -18,8 +18,8 @@ public class Donation : Entity
         Guard.IsNotDefault(donationDate);
         Guard.IsNotDefault(quantity);
         
-        DonatorId = donator.Id;
-        Donator = donator;
+        DonorId = donor.Id;
+        Donor = donor;
         DonationDate = donationDate;
         Quantity = quantity;
     }

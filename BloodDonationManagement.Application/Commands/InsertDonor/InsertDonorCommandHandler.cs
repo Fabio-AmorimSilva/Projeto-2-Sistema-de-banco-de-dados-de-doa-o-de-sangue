@@ -1,15 +1,15 @@
 ﻿namespace BloodDonationManagement.Application.Commands.InsertDonator;
 
-public class InsertDonatorCommandHandler(
-    IDonatorRepository repository,
+public class InsertDonorCommandHandler(
+    IDonorRepository repository,
     GetAddressViaCepService service
-) : IRequestHandler<InsertDonatorCommand>
+) : IRequestHandler<InsertDonorCommand>
 {
-    public async Task Handle(InsertDonatorCommand request, CancellationToken cancellationToken)
+    public async Task Handle(InsertDonorCommand request, CancellationToken cancellationToken)
     {
         var address = await service.GetAddressViaCep(request.Cep);
 
-        var donator = new Donator(
+        var donor = new Donor(
             name: request.Name,
             email: request.Email,
             birth: request.Birth,
@@ -25,6 +25,6 @@ public class InsertDonatorCommandHandler(
             )
         );
 
-        await repository.AddAsync(donator);
+        await repository.AddAsync(donor);
     }
 }

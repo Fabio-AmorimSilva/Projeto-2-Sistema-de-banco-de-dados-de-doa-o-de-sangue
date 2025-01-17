@@ -1,6 +1,6 @@
 ﻿namespace BloodDonationManagement.Domain.Entities;
 
-public class Donator : Entity
+public class Donor : Entity
 {
     public const int MinimumWeight = 50;
     public const int MinimumBloodQuantity = 420;
@@ -18,9 +18,9 @@ public class Donator : Entity
     private readonly List<Donation> _donations = [];
     public IReadOnlyCollection<Donation> Donations => _donations;
 
-    protected Donator() { }
+    protected Donor() { }
     
-    public Donator(
+    public Donor(
         string name,
         string email,
         DateTime birth,
@@ -48,7 +48,7 @@ public class Donator : Entity
 
     public void AddDonation(Donation donation)
     {
-        if (DateTime.Now.Year - donation.Donator.Birth.Year < 18)
+        if (DateTime.Now.Year - donation.Donor.Birth.Year < 18)
             return;
 
         if (donation.Quantity is < MinimumBloodQuantity or > MaximumBloodQuantity)

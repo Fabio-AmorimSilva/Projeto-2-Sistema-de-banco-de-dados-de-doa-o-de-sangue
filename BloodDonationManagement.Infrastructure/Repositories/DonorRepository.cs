@@ -1,10 +1,10 @@
 ﻿namespace BloodDonationManagement.Infrastructure.Repositories;
 
-public class DonatorRepository(BloodDonationManagementDbContext context, IUnitOfWork unitOfWork) : IDonatorRepository
+public class DonorRepository(BloodDonationManagementDbContext context, IUnitOfWork unitOfWork) : IDonorRepository
 {
-    public async Task AddAsync(Donator donator)
+    public async Task AddAsync(Donor donor)
     {
-        await context.Donators.AddAsync(donator);
+        await context.Donors.AddAsync(donor);
         await unitOfWork.Commit();
     }
     
@@ -14,18 +14,18 @@ public class DonatorRepository(BloodDonationManagementDbContext context, IUnitOf
         await unitOfWork.Commit();
     }
 
-    public async Task<Donator?> GetDonatorAndHisDonationsAsync(Guid donatorId)
+    public async Task<Donor?> GetDonorAndHisDonationsAsync(Guid donorId)
     {
-        return await context.Donators
+        return await context.Donors
             .Include(d => d.Donations)
-            .FirstOrDefaultAsync(d => d.Id == donatorId);
+            .FirstOrDefaultAsync(d => d.Id == donorId);
     }
     
-    public async Task<IEnumerable<Donator>> GetAllDonationsFromLast30DaysAsync()
+    public async Task<IEnumerable<Donor>> GetAllDonationsFromLast30DaysAsync()
     {
         var last30Days = DateTime.Now.AddDays(-30);
 
-        return await context.Donators
+        return await context.Donors
             .AsNoTracking()
             .Include(donator => donator.Donations.Where(donation => donation.DonationDate.Date >= last30Days))
             .ToListAsync();
