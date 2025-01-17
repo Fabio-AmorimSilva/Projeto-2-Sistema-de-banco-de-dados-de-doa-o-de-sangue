@@ -1,5 +1,3 @@
-using BloodDonationManagement.WebApi.Utils;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

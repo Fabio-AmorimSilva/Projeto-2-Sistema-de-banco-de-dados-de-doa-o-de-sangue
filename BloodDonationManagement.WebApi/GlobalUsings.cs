@@ -1,5 +1,6 @@
-﻿global using BloodDonationManagement.Application.Commands.InsertDonation;
-global using BloodDonationManagement.Application.Commands.InsertDonator;
+﻿global using BloodDonationManagement.Application;
+global using BloodDonationManagement.Application.Commands.InsertDonation;
+global using BloodDonationManagement.Application.Commands.InsertDonor;
 global using BloodDonationManagement.Application.Commands.InsertUser;
 global using BloodDonationManagement.Application.Commands.LoginUser;
 global using BloodDonationManagement.Application.Commands.UpdateUser;
@@ -12,7 +13,9 @@ global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Infrastructure;
 global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication;
 global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
+global using BloodDonationManagement.WebApi;
 global using BloodDonationManagement.WebApi.ExceptionHandling;
+global using BloodDonationManagement.WebApi.Utils;
 global using MediatR;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Diagnostics;
