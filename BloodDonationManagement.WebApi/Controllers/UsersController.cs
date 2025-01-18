@@ -21,7 +21,7 @@ public class UsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{userId:guid}/update-password")]
-    public async Task<ActionResult> Login([FromBody] UpdateUserPasswordCommand command)
+    public async Task<ActionResult> UpdatePassword([FromBody] UpdateUserPasswordCommand command)
     {
         await mediator.Send(command);
         return NoContent();
