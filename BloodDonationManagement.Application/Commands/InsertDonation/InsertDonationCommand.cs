@@ -1,7 +1,7 @@
 ﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
 
 public record InsertDonationCommand(
-    Guid DonatorId,
+    Guid DonorId,
     DateTime DonationDate,
     int Quantity
 ) : IRequest<ResultDto>;
@@ -10,16 +10,16 @@ public class InsertDonationCommandValidator : AbstractValidator<InsertDonationCo
 {
     public InsertDonationCommandValidator()
     {
-        RuleFor(command => command.DonatorId)
+        RuleFor(command => command.DonorId)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.DonatorId)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.DonorId)));
         
         RuleFor(command => command.DonationDate)
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.DonationDate)));
         
         RuleFor(command => command.Quantity)
-            .NotEmpty()
+            .Must(quantity => quantity > 0)
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonationCommand.Quantity)));
     }
 }
