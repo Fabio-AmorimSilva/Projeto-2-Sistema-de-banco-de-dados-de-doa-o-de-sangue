@@ -32,7 +32,7 @@ public class InsertDonorCommandValidator : AbstractValidator<InsertDonorCommand>
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Gender)));
 
         RuleFor(command => command.Weight)
-            .NotEmpty()
+            .Must(quantity => quantity > 0)
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Weight)));
 
         RuleFor(command => command.BloodType)
