@@ -11,7 +11,7 @@ public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHa
 
         var donations = new ListDonationsDto
         {
-            Donator = new DonatorDto
+            Donor = new DonorDto
             {
                 Email = donor.Email,
                 Name = donor.Name,
