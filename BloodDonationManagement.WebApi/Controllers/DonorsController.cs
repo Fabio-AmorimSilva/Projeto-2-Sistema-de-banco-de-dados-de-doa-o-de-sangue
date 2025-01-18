@@ -14,8 +14,8 @@ public class DonorsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("donations/{donorId:guid}")]
-    [ProducesResponseType(typeof(ListDonationsFromLast30DaysReportDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult> ListDonationsFromLast30Days(Guid donorId)
+    [ProducesResponseType(typeof(ListDonationsDto), StatusCodes.Status200OK)]
+    public async Task<ActionResult> ListDonations(Guid donorId)
     {
         var donations = await mediator.Send(new ListDonationsQuery(donorId));
         return Ok(donations.Data);
