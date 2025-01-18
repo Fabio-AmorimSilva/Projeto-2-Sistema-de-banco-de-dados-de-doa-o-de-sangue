@@ -3,7 +3,7 @@
 public class InsertDonorCommandTests
 {
     [Theory]
-    [MemberData(nameof(SimulationInsertDonationCommand))]
+    [MemberData(nameof(SimulationInsertDonorCommand))]
     public void ShouldReturnErrorWhenValidationFails(InsertDonorCommand command,
         string expectedErrorMessage
     )
@@ -15,7 +15,7 @@ public class InsertDonorCommandTests
         errorMessage.Errors[0].ErrorMessage.Should().Be(expectedErrorMessage);
     }
 
-    public static TheoryData<InsertDonorCommand, string> SimulationInsertDonationCommand()
+    public static TheoryData<InsertDonorCommand, string> SimulationInsertDonorCommand()
     {
         return new TheoryData<InsertDonorCommand, string>
         {
