@@ -14,7 +14,7 @@ public class ListDonationsFromLast30DaysReportQueryHandler(IDonorRepository repo
         
         var donations = new ListDonationsFromLast30DaysReportDto
         {
-            Donators = donors.Select(donor => new DonatorDto
+            Donators = donors.Select(donor => new DonorDto
             {
                 Email = donor.Email,
                 Name = donor.Name,

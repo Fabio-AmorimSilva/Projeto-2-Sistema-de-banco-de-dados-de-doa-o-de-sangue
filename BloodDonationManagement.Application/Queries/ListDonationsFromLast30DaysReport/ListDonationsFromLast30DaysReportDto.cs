@@ -2,5 +2,5 @@
 
 public record ListDonationsFromLast30DaysReportDto
 {
-    public required IEnumerable<DonatorDto> Donators { get; init; }
+    public required IEnumerable<DonorDto> Donators { get; init; }
 }

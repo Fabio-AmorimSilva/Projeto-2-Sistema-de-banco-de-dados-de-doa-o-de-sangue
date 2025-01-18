@@ -2,5 +2,5 @@
 
 public record ListDonationsDto
 {
-    public required DonatorDto Donator { get; init; }
+    public required DonorDto Donor { get; init; }
 }
