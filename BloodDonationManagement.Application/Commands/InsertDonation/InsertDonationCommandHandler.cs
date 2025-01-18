@@ -7,7 +7,7 @@ public class InsertDonationCommandHandler(
 {
     public async Task<ResultDto> Handle(InsertDonationCommand request, CancellationToken cancellationToken)
     {
-        var donor = await repository.GetDonorAndHisDonationsAsync(request.DonatorId);
+        var donor = await repository.GetDonorAndHisDonationsAsync(request.DonorId);
         
         if (donor is null)
             return ResultDto.Error(ErrorMessages.NotFound<Donor>());
