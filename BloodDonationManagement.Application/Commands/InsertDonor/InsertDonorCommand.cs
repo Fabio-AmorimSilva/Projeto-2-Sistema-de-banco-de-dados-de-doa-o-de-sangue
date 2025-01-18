@@ -43,10 +43,6 @@ public class InsertDonorCommandValidator : AbstractValidator<InsertDonorCommand>
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.RhFactor)));
 
-        RuleFor(command => command.Name)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Name)));
-
         RuleFor(command => command.Cep)
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Cep)));
