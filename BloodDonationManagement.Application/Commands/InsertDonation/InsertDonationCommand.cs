@@ -1,10 +1,12 @@
-﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.InsertDonation;
 
 public record InsertDonationCommand(
     Guid DonorId,
     DateTime DonationDate,
     int Quantity
-) : IRequest<ResultDto>;
+) : IRequest<Result>;
 
 public class InsertDonationCommandValidator : AbstractValidator<InsertDonationCommand>
 {

@@ -1,20 +1,22 @@
-﻿namespace BloodDonationManagement.Application.Commands.LoginUser;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.LoginUser;
 
 public class LoginUserCommandHandler(
     IUserRepository repository,
     JwtTokenService tokenService
-) : IRequestHandler<LoginUserCommand, ResultDto<string>>
+) : IRequestHandler<LoginUserCommand, Result<string>>
 {
-    public async Task<ResultDto<string>> Handle(LoginUserCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(LoginUserCommand request, CancellationToken cancellationToken)
     {
         var hashedPassword = PasswordHashService.HashPassword(request.Password);
         var user = await repository.GetUserByEmailAndPassword(request.Email, hashedPassword);
 
         if (user is null)
-            return ResultDto<string>.Error(ErrorMessages.NotFound<User>());
+            return Result<string>.Error(ErrorMessages.NotFound<User>());
 
         var token = tokenService.GenerateToken(user);
 
-        return new ResultDto<string>(token);
+        return new Result<string>(token);
     }
 }

@@ -1,17 +1,19 @@
-﻿namespace BloodDonationManagement.Application.Commands.UpdateUser;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.UpdateUser;
 
 public class UpdateUserCommandHandler(
     IUserRepository repository
-) : IRequestHandler<UpdateUserCommand, ResultDto<string>>
+) : IRequestHandler<UpdateUserCommand, Result<string>>
 {
-    public async Task<ResultDto<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
         var user = await repository.GetAsync(
             id: request.Id
         );
         
         if(user is null)
-            return ResultDto<string>.Error(ErrorMessages.NotFound<User>());
+            return Result<string>.Error(ErrorMessages.NotFound<User>());
 
         user.Update(
             name: request.Name,
@@ -20,6 +22,6 @@ public class UpdateUserCommandHandler(
         
         await repository.UpdateAsync(user);
         
-        return ResultDto<string>.Success();
+        return Result<string>.Success();
     }
 }

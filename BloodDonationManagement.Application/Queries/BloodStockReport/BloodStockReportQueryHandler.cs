@@ -1,8 +1,10 @@
-﻿namespace BloodDonationManagement.Application.Queries.BloodStockReport;
+﻿using BloodDonationManagement.Domain.Common;
 
-public class BloodStockReportQueryHandler(IBloodStockRepository repository) : IRequestHandler<BloodStockReportQuery, ResultDto<IEnumerable<BloodStockDto>>>
+namespace BloodDonationManagement.Application.Queries.BloodStockReport;
+
+public class BloodStockReportQueryHandler(IBloodStockRepository repository) : IRequestHandler<BloodStockReportQuery, Result<IEnumerable<BloodStockDto>>>
 {
-    public async Task<ResultDto<IEnumerable<BloodStockDto>>> Handle(BloodStockReportQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IEnumerable<BloodStockDto>>> Handle(BloodStockReportQuery request, CancellationToken cancellationToken)
     {
         var bloodStocks = await repository.ListAsync();
 
@@ -19,6 +21,6 @@ public class BloodStockReportQueryHandler(IBloodStockRepository repository) : IR
                 Quantity = bt.First().Quantity
             });
         
-        return new ResultDto<IEnumerable<BloodStockDto>>(bloodStockByType);
+        return new Result<IEnumerable<BloodStockDto>>(bloodStockByType);
     }
 }

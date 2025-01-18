@@ -1,44 +1,44 @@
-﻿namespace BloodDonationManagement.Application.Dtos;
+﻿namespace BloodDonationManagement.Domain.Common;
 
-public class ResultDto
+public class Result
 {
     public string Message { get; set; } = null!;
     public bool IsSuccess { get; set; }
 
-    public static ResultDto Success()
-        => new ResultDto
+    public static Result Success()
+        => new Result
         {
             IsSuccess = true
         };
 
-    public static ResultDto Error(string message)
-        => new ResultDto
+    public static Result Error(string message)
+        => new Result
         {
             IsSuccess = false,
             Message = message
         };
 }
 
-public class ResultDto<T> : ResultDto
+public class Result<T> : Result
 {
     public T? Data { get; set; }
 
-    public ResultDto()
+    public Result()
     {
     }
     
-    public ResultDto(T? data)
+    public Result(T? data)
     {
         Data = data;
     }
     
-    public new static ResultDto<T> Success()
+    public new static Result<T> Success()
         => new()
         {
             IsSuccess = true
         };
 
-    public new static ResultDto<T> Error(string message)
+    public new static Result<T> Error(string message)
         => new()
         {
             IsSuccess = false,

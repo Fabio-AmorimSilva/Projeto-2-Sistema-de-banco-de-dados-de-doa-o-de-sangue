@@ -1,13 +1,15 @@
-﻿namespace BloodDonationManagement.Application.Queries.ListDonations;
+﻿using BloodDonationManagement.Domain.Common;
 
-public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHandler<ListDonationsQuery, ResultDto<ListDonationsDto>>
+namespace BloodDonationManagement.Application.Queries.ListDonations;
+
+public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHandler<ListDonationsQuery, Result<ListDonationsDto>>
 {
-    public async Task<ResultDto<ListDonationsDto>> Handle(ListDonationsQuery request, CancellationToken cancellationToken)
+    public async Task<Result<ListDonationsDto>> Handle(ListDonationsQuery request, CancellationToken cancellationToken)
     {
         var donor = await repository.GetDonorAndHisDonationsAsync(donorId: request.DonorId);
 
         if (donor is null)
-            return ResultDto<ListDonationsDto>.Error(ErrorMessages.NotFound<Donor>());
+            return Result<ListDonationsDto>.Error(ErrorMessages.NotFound<Donor>());
 
         var donations = new ListDonationsDto
         {
@@ -35,6 +37,6 @@ public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHa
             }
         };
 
-        return new ResultDto<ListDonationsDto>(donations);
+        return new Result<ListDonationsDto>(donations);
     }
 }

@@ -1,3 +1,5 @@
-﻿namespace BloodDonationManagement.Application.Queries.BloodStockReport;
+﻿using BloodDonationManagement.Domain.Common;
 
-public record BloodStockReportQuery : IRequest<ResultDto<IEnumerable<BloodStockDto>>>;
+namespace BloodDonationManagement.Application.Queries.BloodStockReport;
+
+public record BloodStockReportQuery : IRequest<Result<IEnumerable<BloodStockDto>>>;

@@ -1,9 +1,11 @@
-﻿namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
 
 public record UpdateUserPasswordCommand(
     Guid Id,
     string Password
-) : IRequest<ResultDto<string>>;
+) : IRequest<Result<string>>;
 
 public class UpdateUserPasswordCommandValidator : AbstractValidator<UpdateUserPasswordCommand>
 {

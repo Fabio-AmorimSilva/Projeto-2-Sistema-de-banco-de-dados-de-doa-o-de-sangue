@@ -1,3 +1,5 @@
-﻿namespace BloodDonationManagement.Application.Queries.ListDonations;
+﻿using BloodDonationManagement.Domain.Common;
 
-public record ListDonationsQuery(Guid DonorId) : IRequest<ResultDto<ListDonationsDto>>;
+namespace BloodDonationManagement.Application.Queries.ListDonations;
+
+public record ListDonationsQuery(Guid DonorId) : IRequest<Result<ListDonationsDto>>;

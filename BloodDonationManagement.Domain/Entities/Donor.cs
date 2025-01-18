@@ -46,13 +46,17 @@ public class Donor : Entity
         Address = address;
     }
 
-    public void AddDonation(Donation donation)
+    public Result AddDonation(Donation donation)
     {
         if (DateTime.Now.Year - donation.Donor.Birth.Year < 18)
-            return;
+        {
+            var donorAge = DateTime.Now.Year - donation.Donor.Birth.Year;
+            
+            return Result.Error(ErrorMessages.CannotMakeDonationByAge(donorAge));
+        }
 
         if (donation.Quantity is < MinimumBloodQuantity or > MaximumBloodQuantity)
-            return;
+            return Result.Error(ErrorMessages.DonationHasToBeGreaterThan(MinimumBloodQuantity));
 
         if (_donations.Count != 0)
         {
@@ -62,10 +66,11 @@ public class Donor : Entity
             {
                 case Gender.Female when donation.DonationDate.Date < lastDonationDate.AddDays(90):
                 case Gender.Male when donation.DonationDate.Date < lastDonationDate.AddDays(60):
-                    return;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        return Result.Success();
     }
 }

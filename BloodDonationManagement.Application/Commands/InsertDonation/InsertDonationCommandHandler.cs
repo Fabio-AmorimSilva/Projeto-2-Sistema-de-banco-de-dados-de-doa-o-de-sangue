@@ -1,16 +1,18 @@
-﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.InsertDonation;
 
 public class InsertDonationCommandHandler(
     IDonorRepository repository,
     IMediator mediator
-) : IRequestHandler<InsertDonationCommand, ResultDto>
+) : IRequestHandler<InsertDonationCommand, Result>
 {
-    public async Task<ResultDto> Handle(InsertDonationCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(InsertDonationCommand request, CancellationToken cancellationToken)
     {
         var donor = await repository.GetDonorAndHisDonationsAsync(request.DonorId);
         
         if (donor is null)
-            return ResultDto.Error(ErrorMessages.NotFound<Donor>());
+            return Result.Error(ErrorMessages.NotFound<Donor>());
 
         var donation = new Donation(
             donor: donor,
@@ -18,7 +20,10 @@ public class InsertDonationCommandHandler(
             quantity: request.Quantity
         );
         
-        donor.AddDonation(donation);
+        var result = donor.AddDonation(donation);
+        
+        if(!result.IsSuccess)
+            return result;
         
         await repository.AddDonationAsync(donation);
         
@@ -31,6 +36,6 @@ public class InsertDonationCommandHandler(
 
         await mediator.Publish(@event, cancellationToken);
         
-        return ResultDto.Success();
+        return Result.Success();
     }
 }

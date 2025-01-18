@@ -1,16 +1,18 @@
-﻿namespace BloodDonationManagement.Application.Queries.ListDonationsFromLast30DaysReport;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Queries.ListDonationsFromLast30DaysReport;
 
 public class ListDonationsFromLast30DaysReportQueryHandler(IDonorRepository repository)
-    : IRequestHandler<ListDonationsFromLast30DaysReportQuery, ResultDto<ListDonationsFromLast30DaysReportDto>>
+    : IRequestHandler<ListDonationsFromLast30DaysReportQuery, Result<ListDonationsFromLast30DaysReportDto>>
 {
-    public async Task<ResultDto<ListDonationsFromLast30DaysReportDto>> Handle(ListDonationsFromLast30DaysReportQuery request, CancellationToken cancellationToken)
+    public async Task<Result<ListDonationsFromLast30DaysReportDto>> Handle(ListDonationsFromLast30DaysReportQuery request, CancellationToken cancellationToken)
     {
         var donors = await repository.GetAllDonationsFromLast30DaysAsync();
 
         var existsDonations = donors.SelectMany(d => d.Donations).Any();
         
         if (existsDonations)
-            return new ResultDto<ListDonationsFromLast30DaysReportDto>();
+            return new Result<ListDonationsFromLast30DaysReportDto>();
         
         var donations = new ListDonationsFromLast30DaysReportDto
         {
@@ -38,6 +40,6 @@ public class ListDonationsFromLast30DaysReportQueryHandler(IDonorRepository repo
             })
         };
         
-        return new ResultDto<ListDonationsFromLast30DaysReportDto>(donations);
+        return new Result<ListDonationsFromLast30DaysReportDto>(donations);
     }
 }

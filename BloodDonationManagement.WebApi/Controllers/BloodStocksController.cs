@@ -1,4 +1,6 @@
-﻿namespace BloodDonationManagement.WebApi.Controllers;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
@@ -6,7 +8,7 @@
 public class BloodStocksController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResultDto<IEnumerable<BloodStockDto>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Result<IEnumerable<BloodStockDto>>))]
     public async Task<ActionResult<IEnumerable<BloodStockDto>>> BloodStockReport()
     {
         var bloodStock = await mediator.Send(new BloodStockReportQuery());

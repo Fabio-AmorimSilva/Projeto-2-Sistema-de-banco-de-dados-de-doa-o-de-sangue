@@ -1,10 +1,12 @@
-﻿namespace BloodDonationManagement.Application.Commands.UpdateUser;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.UpdateUser;
 
 public record UpdateUserCommand(
     Guid Id,
     string Name,
     string Email
-) : IRequest<ResultDto<string>>;
+) : IRequest<Result<string>>;
 
 public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
 {

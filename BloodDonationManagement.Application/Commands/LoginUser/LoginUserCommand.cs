@@ -1,9 +1,11 @@
-﻿namespace BloodDonationManagement.Application.Commands.LoginUser;
+﻿using BloodDonationManagement.Domain.Common;
+
+namespace BloodDonationManagement.Application.Commands.LoginUser;
 
 public record LoginUserCommand(
     string Email, 
     string Password
-) : IRequest<ResultDto<string>>;
+) : IRequest<Result<string>>;
 
 public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
 {
