@@ -9,6 +9,7 @@ global using BloodDonationManagement.Application.Dtos;
 global using BloodDonationManagement.Application.Queries.BloodStockReport;
 global using BloodDonationManagement.Application.Queries.ListDonations;
 global using BloodDonationManagement.Application.Queries.ListDonationsFromLast30DaysReport;
+global using BloodDonationManagement.Domain.Common;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Infrastructure;
 global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication;

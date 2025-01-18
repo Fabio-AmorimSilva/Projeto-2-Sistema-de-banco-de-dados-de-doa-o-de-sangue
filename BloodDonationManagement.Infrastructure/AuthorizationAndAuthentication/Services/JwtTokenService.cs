@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Extensions;
-
-namespace BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
+﻿namespace BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
 
 public class JwtTokenService(IOptions<JwtSettings> settings)
 {

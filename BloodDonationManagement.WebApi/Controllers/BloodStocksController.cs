@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.WebApi.Controllers;
+﻿namespace BloodDonationManagement.WebApi.Controllers;
 
 [ApiController]
 [Authorize]

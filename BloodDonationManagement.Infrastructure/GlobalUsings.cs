@@ -5,6 +5,7 @@ global using System.Text;
 global using BloodDonationManagement.Domain.Common.Interfaces;
 global using BloodDonationManagement.Domain.Entities;
 global using BloodDonationManagement.Domain.Enums;
+global using BloodDonationManagement.Domain.Extensions;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication;
 global using BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
