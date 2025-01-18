@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
+﻿namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
 
 public class UpdateUserPasswordCommandHandler(
     IUserRepository repository,

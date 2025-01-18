@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Services;
+﻿namespace BloodDonationManagement.Application.Services;
 
 public class GetAddressViaCepService
 {

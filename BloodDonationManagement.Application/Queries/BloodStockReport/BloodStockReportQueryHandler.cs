@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Queries.BloodStockReport;
+﻿namespace BloodDonationManagement.Application.Queries.BloodStockReport;
 
 public class BloodStockReportQueryHandler(IBloodStockRepository repository) : IRequestHandler<BloodStockReportQuery, Result<IEnumerable<BloodStockDto>>>
 {

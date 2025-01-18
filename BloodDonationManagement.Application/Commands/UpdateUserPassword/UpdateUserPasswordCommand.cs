@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
+﻿namespace BloodDonationManagement.Application.Commands.UpdateUserPassword;
 
 public record UpdateUserPasswordCommand(
     Guid Id,

@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Commands.InsertDonation;
+﻿namespace BloodDonationManagement.Application.Commands.InsertDonation;
 
 public class InsertDonationCommandHandler(
     IDonorRepository repository,

@@ -7,9 +7,9 @@ public record InputAddressDto(
     string Cep
 );
 
-public class AddressDtoValidator : AbstractValidator<InputAddressDto>
+public class InputAddressDtoValidator : AbstractValidator<InputAddressDto>
 {
-    public AddressDtoValidator()
+    public InputAddressDtoValidator()
     {
         RuleFor(dto => dto.PublicArea)
             .NotEmpty()

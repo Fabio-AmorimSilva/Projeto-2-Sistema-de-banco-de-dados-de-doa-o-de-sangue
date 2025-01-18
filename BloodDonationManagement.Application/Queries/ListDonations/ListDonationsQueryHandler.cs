@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Queries.ListDonations;
+﻿namespace BloodDonationManagement.Application.Queries.ListDonations;
 
 public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHandler<ListDonationsQuery, Result<ListDonationsDto>>
 {

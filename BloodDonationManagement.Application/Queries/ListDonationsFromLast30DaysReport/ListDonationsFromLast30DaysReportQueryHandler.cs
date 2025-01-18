@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Queries.ListDonationsFromLast30DaysReport;
+﻿namespace BloodDonationManagement.Application.Queries.ListDonationsFromLast30DaysReport;
 
 public class ListDonationsFromLast30DaysReportQueryHandler(IDonorRepository repository)
     : IRequestHandler<ListDonationsFromLast30DaysReportQuery, Result<ListDonationsFromLast30DaysReportDto>>

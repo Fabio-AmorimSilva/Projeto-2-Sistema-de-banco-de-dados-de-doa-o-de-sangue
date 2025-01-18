@@ -1,6 +1,4 @@
-﻿using BloodDonationManagement.Domain.Common;
-
-namespace BloodDonationManagement.Application.Commands.LoginUser;
+﻿namespace BloodDonationManagement.Application.Commands.LoginUser;
 
 public class LoginUserCommandHandler(
     IUserRepository repository,
