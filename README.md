@@ -52,4 +52,4 @@ O sistema foi desenvolvido utilizando as seguintes tecnologias:
     dotnet run
     ```
 
-6. O sistema estará disponível em [http://localhost:5000](http://localhost:5000) ou outra porta configurada.
+6. O sistema estará disponível em [http://localhost:5000](http://localhost:5000/v1/scalar) ou outra porta configurada.
