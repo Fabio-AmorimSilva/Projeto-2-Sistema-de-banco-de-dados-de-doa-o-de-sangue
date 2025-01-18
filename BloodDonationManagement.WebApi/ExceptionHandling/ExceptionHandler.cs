@@ -1,6 +1,6 @@
 ﻿namespace BloodDonationManagement.WebApi.ExceptionHandling;
 
-public class ExceptionHandler : IExceptionHandler
+internal class ExceptionHandler : IExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(
         HttpContext httpContext, 
