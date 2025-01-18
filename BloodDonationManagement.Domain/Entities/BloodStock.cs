@@ -16,6 +16,8 @@ public class BloodStock : Entity
         int quantity
     )
     {
+        Guard.IsNotDefault(quantity);
+        
         BloodType = bloodType;
         RhFactor = rhFactor;
         Quantity = quantity;
