@@ -28,7 +28,7 @@ public class InsertDonorCommandValidator : AbstractValidator<InsertDonorCommand>
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Birth)));
 
         RuleFor(command => command.Gender)
-            .NotEmpty()
+            .IsInEnum()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Gender)));
 
         RuleFor(command => command.Weight)
@@ -36,11 +36,11 @@ public class InsertDonorCommandValidator : AbstractValidator<InsertDonorCommand>
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.Weight)));
 
         RuleFor(command => command.BloodType)
-            .NotEmpty()
+            .IsInEnum()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.BloodType)));
 
         RuleFor(command => command.RhFactor)
-            .NotEmpty()
+            .IsInEnum()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(InsertDonorCommand.RhFactor)));
 
         RuleFor(command => command.Cep)
