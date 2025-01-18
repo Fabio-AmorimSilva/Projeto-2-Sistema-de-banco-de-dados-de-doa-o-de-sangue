@@ -1,4 +1,4 @@
-﻿namespace BloodDonationManagement.WebApi;
+﻿namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
