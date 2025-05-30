@@ -1,4 +1,4 @@
-﻿namespace BloodDonationManagement.Infrastructure.AuthorizationAndAuthentication.Services;
+﻿namespace BloodDonationManagement.Infrastructure.Auth.Services;
 
 public class JwtTokenService(IOptions<JwtSettings> settings)
 {
