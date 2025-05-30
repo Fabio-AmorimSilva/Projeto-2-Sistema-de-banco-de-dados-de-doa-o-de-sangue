@@ -1,4 +1,4 @@
-﻿namespace BloodDonationManagement.Application.Services;
+﻿namespace BloodDonationManagement.Infrastructure.Services.ViaCep;
 
 public class GetAddressViaCepService
 {

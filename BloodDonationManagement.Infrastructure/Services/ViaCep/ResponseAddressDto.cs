@@ -1,4 +1,4 @@
-﻿namespace BloodDonationManagement.Application.Dtos;
+﻿namespace BloodDonationManagement.Infrastructure.Services.ViaCep;
 
 public record ResponseAddressDto
 {
