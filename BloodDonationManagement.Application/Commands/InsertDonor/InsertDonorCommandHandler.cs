@@ -2,12 +2,17 @@
 
 public class InsertDonorCommandHandler(
     IDonorRepository repository,
-    GetAddressViaCepService service
+    IGetAddressViaCepService service,
+    IAiService aiService
 ) : IRequestHandler<InsertDonorCommand>
 {
     public async Task Handle(InsertDonorCommand request, CancellationToken cancellationToken)
     {
         var address = await service.GetAddressViaCep(request.Cep);
+        var complement = await aiService.Create(
+            systemPrompt: $"Detailed information about the city {address.Data.City}",
+            userPrompt: address.Data.Cep
+        );
 
         var donor = new Donor(
             name: request.Name,
@@ -21,7 +26,8 @@ public class InsertDonorCommandHandler(
                 publicArea: address.Data!.PublicArea,
                 city: address.Data.City,
                 state: address.Data.State,
-                cep: address.Data.Cep
+                cep: address.Data.Cep,
+                complement: complement
             )
         );
 

@@ -28,7 +28,8 @@ public class ListDonationsFromLast30DaysReportQueryHandler(IDonorRepository repo
                     PublicArea = donor.Address.PublicArea,
                     City = donor.Address.City,
                     State = donor.Address.State,
-                    Cep = donor.Address.Cep
+                    Cep = donor.Address.Cep,
+                    Complement = donor.Address.Complement
                 },
                 Donations = donor.Donations.Select(donation => new DonationDto
                 {
