@@ -8,6 +8,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IBloodStockRepository, BloodStockRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IGetAddressViaCepService, GetAddressViaCepService>();
+        services.AddScoped<IAiService, AiService>();
 
         services.AddScoped<PasswordHashService>();
         services.AddScoped<JwtTokenService>();
@@ -16,6 +18,10 @@ public static class ServiceCollectionExtensions
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
         );
 
+        services
+            .AddJwtConfig(configuration)
+            .AddOpenAiServices(configuration);
+        
         return services;
     }
     
@@ -31,7 +37,7 @@ public static class ServiceCollectionExtensions
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
+        }).AddJwtBearer("Bearer",options =>
         {
             options.RequireHttpsMetadata = false;
             options.SaveToken = true;
@@ -46,6 +52,13 @@ public static class ServiceCollectionExtensions
             };
         });
 
+        return services;
+    }
+
+    public static IServiceCollection AddOpenAiServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<AiModel>(configuration.GetSection("OpenAi"));
+        
         return services;
     }
 }
