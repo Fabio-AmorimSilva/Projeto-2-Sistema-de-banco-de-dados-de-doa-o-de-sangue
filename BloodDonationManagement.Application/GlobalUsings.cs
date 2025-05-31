@@ -11,6 +11,7 @@ global using BloodDonationManagement.Domain.Messages;
 global using BloodDonationManagement.Domain.Repositories;
 global using BloodDonationManagement.Domain.ValueObjects;
 global using BloodDonationManagement.Infrastructure.Auth.Services;
+global using BloodDonationManagement.Infrastructure.Services.Ai;
 global using BloodDonationManagement.Infrastructure.Services.ViaCep;
 global using FluentValidation;
 global using MediatR;

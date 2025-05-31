@@ -1,6 +1,6 @@
 ﻿namespace BloodDonationManagement.Infrastructure.Services.ViaCep;
 
-public class GetAddressViaCepService
+public class GetAddressViaCepService : IGetAddressViaCepService
 {
     public async Task<Result<ResponseAddressDto>> GetAddressViaCep(string cep)
     {

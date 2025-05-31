@@ -25,7 +25,8 @@ public class ListDonationsQueryHandler(IDonorRepository repository) : IRequestHa
                     PublicArea = donor.Address.PublicArea,
                     City = donor.Address.City,
                     State = donor.Address.State,
-                    Cep = donor.Address.Cep
+                    Cep = donor.Address.Cep,
+                    Complement = donor.Address.Complement
                 },
                 Donations = donor.Donations.Select(donation => new DonationDto
                 {

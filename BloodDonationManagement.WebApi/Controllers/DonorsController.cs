@@ -1,7 +1,6 @@
 ﻿namespace BloodDonationManagement.WebApi.Controllers;
 
 [ApiController]
-[Authorize]
 [Route("api/donors")]
 public class DonorsController(IMediator mediator) : ControllerBase
 {
