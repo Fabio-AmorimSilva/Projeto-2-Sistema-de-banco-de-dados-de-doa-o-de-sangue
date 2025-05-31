@@ -5,11 +5,8 @@ builder.Services.AddControllers();
 builder.Services
     .AddInfrastructure(builder.Configuration)
     .AddExceptionHandler()
-    .AddApplication();
-
-builder.Services
-    .AddInfrastructure(builder.Configuration)
-    .AddJwtConfig(builder.Configuration);
+    .AddApplication()
+    .AddHttpClient();
 
 builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<BearerSecuritySchemeTransformer>(); });
 
