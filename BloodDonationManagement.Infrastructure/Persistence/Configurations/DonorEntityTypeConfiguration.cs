@@ -64,6 +64,10 @@ public class DonorEntityTypeConfiguration : IEntityTypeConfiguration<Donor>
                 address
                     .Property(p => p.Cep)
                     .IsRequired();
+                
+                address
+                    .Property(p => p.Complement)
+                    .IsRequired();
             });
     }
 }
